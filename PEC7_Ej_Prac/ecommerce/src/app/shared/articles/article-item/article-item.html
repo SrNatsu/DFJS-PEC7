@@ -1,0 +1,21 @@
+<mat-card class="card" appearance="outlined" [class.sale]="article().isOnSale">
+  <a [routerLink]="['/article', article().id]" [state]="{ articleData: article() }"><img mat-card-image class="image" src="{{ article().imageUrl | image }}" alt="Article image"></a>
+
+  <mat-card-header class="heading">
+    <h1 mat-card-title class="name">{{ article(). name }}</h1>
+    <p class="price" [ngClass]="{'notSale' : !article().isOnSale}">{{ article().price| price }}</p>
+  </mat-card-header>
+
+  <mat-card-content class="metadata">
+    <p class="onSale" [class.sale]="article().isOnSale">{{ article().isOnSale ? 'On sale!' : 'Not on sale' }}
+  </mat-card-content>
+
+  @if (article().isOnSale) {
+  <mat-card-actions class="cart">
+    <button matButton class="decrement" (click)="changeQuantity(-1)" [disabled]="article().quantityInCart === 0">-</button>
+    <p class="quantity">{{ article().quantityInCart }}</p>
+    <button matButton class="increment" (click)="changeQuantity(+1)">+</button>
+  </mat-card-actions>
+  }
+
+</mat-card>

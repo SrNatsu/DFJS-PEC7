@@ -1,0 +1,48 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: palevioletred;
+  padding: 1rem 2rem;
+  box-shadow: 0 5px 10px pink;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: start;
+  gap: 3rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+}
+
+.link {
+  color: rgb(225, 225, 225);
+  text-decoration: none;
+  will-change: color;
+
+  &:hover,
+  &:focus-visible,
+  &.active {
+    color: white;
+    font-weight: bold;
+    transition: color .3s ease-out;
+  }
+
+  &:focus-visible {
+    outline: none;
+    border: 1px solid white;
+    padding: .5rem;
+  }
+}

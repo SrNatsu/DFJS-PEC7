@@ -1,0 +1,16 @@
+<div class="container">
+  <h1 id="title" class="title">Lista de artículos</h1>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Busca un artículo por nombre...</mat-label>
+    <input matInput type="text" [formControl]="name">
+  </mat-form-field>
+
+  <div id="list" class="list">
+    @for (article of articles(); track article.id) {
+    <app-article-item [article]="article" (articleQuantityChange)="onChangeQuantity($event)"></app-article-item>
+    } @empty {
+    <p>No se han encontrado artículos.</p>
+    }
+  </div>
+</div>

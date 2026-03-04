@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="back-button-container">
+  <button mat-button routerLink="/article/list" class="back-button">
+    <mat-icon>arrow_back</mat-icon>
+    Go back to list
+  </button>
+  </div>
+
+  @if (article(); as article) {
+    <mat-card class="detail-card" appearance="outlined">
+      
+      <div class="card-layout">
+        <div class="image-section">
+          <img mat-card-image [src]="article.imageUrl | image" [alt]="article.name" class="image">
+        </div>
+
+        <div class="info-section">
+          
+          <mat-card-header class="header">
+            <mat-card-title class="title">{{ article.name }}</mat-card-title>
+            <mat-card-subtitle class="price" [ngClass]="{'notSale' : !article.isOnSale}">
+              {{ article.price | price }}
+            </mat-card-subtitle>
+          </mat-card-header>
+
+          <mat-card-content class="content">
+            @if (article.isOnSale) {
+              <mat-chip class="sale-badge" highlighted style="color:white"><span class="sale-text">On Sale!</span></mat-chip>
+            } @else {
+              <mat-chip class="nosale-badge" highlighted>Not on sale</mat-chip>
+            }
+
+            <div class="stock-info">
+              <mat-icon color="primary">shopping_carticle</mat-icon>
+              <span>Cantidad en tu carrito: <strong>{{ article.quantityInCart }}</strong></span>
+            </div>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  }
+</div>
